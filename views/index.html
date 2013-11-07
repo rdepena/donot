@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Don't Do</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<!-- styles -->
+		<link rel="stylesheet" type="text/css" href="css/topcoat-desktop-dark.min.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/brackets.css">
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	</head>
+	<body class="dark">
+		<header id="main-header">
+			<div class="max-width">
+				<hgroup>
+					<h1>
+						<a href="#/">Don't Do</a>
+					</h1>
+					<p>Don't do these things.</p>
+				</hgroup>
+			</div>
+		</header>
+		<div id="wrapper">
+			<div ng-app="dontdo" class="max-width" id="content">
+				<article ng-controller="ListCtrl" class="component">
+					<header><h2>{{model.listName}} Don't</h2></header>
+						<section>
+							<input class="topcoat-text-input--large" type="text" 
+							ng-model="model.listName"  size="30" placeholder="Name this list">
+						</section>
+				</article>
+				<article ng-controller="addListItemCtrl" class="component">
+					<header>
+						<h2>Add an item</h2>
+					</header>
+					<section>
+						<form ng-submit="addItem()">
+							<input type="text" class="topcoat-text-input--large" ng-model="model.itemName"  placeholder="eat the yellow snow">
+							<button class="topcoat-button--large">Add</button>
+						</form>
+					</section>
+				</article>
+				<article ng-controller="ListCtrl" >
+					<section>
+						<ul class="list">
+							<li class="list__item" ng-repeat="item in model.itemList">
+								<button class="topcoat-icon-button--large--quiet">
+									<span class="topcoat-icon" style="background-color:#ec514e;"></span>
+								</button>
+								{{item}} 
+							</li>
+						</ul>
+					</section>
+				</article>
+				<article>
+					<header>
+						<h3>Save it</h3>
+					</header>
+					<section>
+						<button class="topcoat-button--large">Save</button>
+					</section>
+				</article>
+			</div>
+		</div>
+		<script src="js/vendor/angular.min.js"></script>
+		<script src="js/dist/dontdo.js"></script>
+	</body>
+</html>
